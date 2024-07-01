@@ -1,0 +1,30 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.4.0
+		environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mysql_playground
+			MYSQL_USER: mysql
+			MYSQL_PASSWORD: mysql
+		restart: always		
+   	ports:
+      - "3306:3306"
+    networks:
+      - my_network
+
+  app:
+    build: .
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    networks:
+      - my_network
+    command: tail -f /dev/null
+
+networks:
+  my_network:
+    driver: bridge
