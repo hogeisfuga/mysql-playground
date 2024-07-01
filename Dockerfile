@@ -1,6 +1,13 @@
 
 FROM ruby:3.3-alpine
-RUN apt-get update -qq && apt-get install -y build-essential libmysqlclient-dev
+
+# タイムゾーンを設定する
+ENV TZ Asia/Tokyo
+
+RUN apk update && \
+    apk add --no-cache build-base mysql-dev mysql-client tzdata
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 WORKDIR /app
 

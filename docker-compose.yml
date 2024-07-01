@@ -9,6 +9,7 @@ services:
       MYSQL_DATABASE: mysql_playground
       MYSQL_USER: mysql
       MYSQL_PASSWORD: mysql
+      MYSQL_ROOT_HOST: '%'
     restart: always
     ports:
       - "3306:3306"
