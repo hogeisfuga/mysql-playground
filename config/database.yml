@@ -8,4 +8,4 @@ default: &default
 
 development:
   <<: *default
-  database: my_active_record_project_development
+  database: mysql_playground
