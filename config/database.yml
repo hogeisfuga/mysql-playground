@@ -1,0 +1,11 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: 5
+  username: mysql
+  password: mysql
+  host: db
+
+development:
+  <<: *default
+  database: my_active_record_project_development
